@@ -219,10 +219,9 @@ jobs:
         run: |
           rm -rf ./artifact/
           mkdir -p ./artifact/
-          find ./bin/targets/ -name "*img*" | xargs -i mv -f {} ./artifact/
-          find ./bin/targets/ -name "*bin*" | xargs -i mv -f {} ./artifact/
+          mv ./bin/targets/* ./artifact/
       - name: Upload artifact
         uses: actions/upload-artifact@master
         with:
-          name: OpenWrt firmware
+          name: J1900_qemu
           path: ./artifact/

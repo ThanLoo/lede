@@ -7,14 +7,14 @@
 # <https://github.com/KFERMercer/OpenWrt-CI>
 # 
 
-name: J1900
+name: J1900_qemu
 
 on:
   # schedule:
   #   - cron: 0 20 * * *
-  # push:
-  #   branches: 
-  #     - master
+  push:
+    branches: 
+      - master
 
 jobs:
   build:
@@ -102,9 +102,9 @@ jobs:
           # 
           # 编译x64固件:
           cat >> .config <<EOF
-          CONFIG_TARGET_x86=y
-          CONFIG_TARGET_x86_64=y
-          CONFIG_TARGET_x86_64_Generic=y
+          CONFIG_TARGET_armvirt=y
+          CONFIG_TARGET_armvirt_32=y
+          CONFIG_TARGET_armvirt_32_Default=y
           EOF
           # 固件压缩:
           cat >> .config <<EOF
